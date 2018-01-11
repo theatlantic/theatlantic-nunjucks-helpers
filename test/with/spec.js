@@ -1,6 +1,6 @@
 const nunjucks = require('nunjucks');
 const chai = require('chai');
-const extensions = require('../index');
+const extensions = require('../../index');
 
 const WithExtension = extensions.With;
 const expect = chai.expect;

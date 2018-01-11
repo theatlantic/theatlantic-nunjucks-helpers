@@ -1,5 +1,5 @@
-const CacheExtension = require('./lib/cache');
-const WithExtension = require('./lib/with');
+const CacheExtension = require('./lib/cache/extension');
+const WithExtension = require('./lib/with/extension');
 
 module.exports = {
   /**
