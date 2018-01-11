@@ -1,6 +1,6 @@
 {
   "name": "theatlantic-nunjucks-extensions",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Collection of Nunjucks extensions used at the Atlantic",
   "repository": "https://github.com/theatlantic/nunjucks-extensions",
   "bugs": "https://github.com/theatlantic/nunjucks-extensions/issues",
