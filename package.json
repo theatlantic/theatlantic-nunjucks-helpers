@@ -1,12 +1,14 @@
 {
-  "name": "theatlantic-nunjucks-extensions",
+  "name": "theatlantic-nunjucks-helpers",
   "version": "1.0.0",
-  "description": "Collection of Nunjucks extensions used at the Atlantic",
-  "repository": "https://github.com/theatlantic/nunjucks-extensions",
-  "bugs": "https://github.com/theatlantic/nunjucks-extensions/issues",
+  "description": "Collection of Nunjucks helpers used at the Atlantic",
+  "repository": "https://github.com/theatlantic/theatlantic-nunjucks-helpers",
+  "bugs": "https://github.com/theatlantic/theatlantic-nunjucks-helpers/issues",
   "keywords": [
     "nunjucks",
-    "extensions"
+    "extensions",
+    "filters",
+    "globals"
   ],
   "main": "index.js",
   "dependencies": {},
