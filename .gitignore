@@ -1,1 +1,9 @@
+# package management
 node_modules
+
+# Code Coverage
+coverage
+.nyc_output
+
+# Misc
+.DS_Store

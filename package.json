@@ -11,7 +11,7 @@
   "main": "index.js",
   "dependencies": {},
   "scripts": {
-    "test": "mocha test/**/*.js",
+    "test": "nyc -r=html -r=text mocha test/**/*.js",
     "lint": "eslint index.js lib/**/*.js test/**/*.js"
   },
   "devDependencies": {
@@ -20,7 +20,8 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
     "mocha": "^4.1.0",
-    "nunjucks": "^3.0.1"
+    "nunjucks": "^3.0.1",
+    "nyc": "^11.4.1"
   },
   "peerDependencies": {
     "nunjucks": "^1.0.0 || ^2.0.0 || ^3.0.0"
