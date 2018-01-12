@@ -4,7 +4,7 @@ const helpers = require('../../index');
 
 const expect = chai.expect;
 
-describe('#jsonfiy filter', function() {
+describe('#jsonify filter', function() {
   let env;
 
   before(function() {
