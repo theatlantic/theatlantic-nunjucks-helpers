@@ -19,6 +19,12 @@ module.exports = {
      */
     With: require('./lib/extensions/with'),
   },
-  filters: {},
+  filters: {
+    /**
+     * The 'jsonify' filter
+     * @type {Function}
+     */
+    jsonify: require('./lib/filters/jsonify'),
+  },
   globals: {},
 };
