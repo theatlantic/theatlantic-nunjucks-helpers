@@ -44,5 +44,11 @@ module.exports = {
      * @type {Function}
      */
     criticalCss: require('./lib/globals/critical-css'),
+
+    /**
+     * The 'static' global - noop
+     * @type {Function}
+     */
+    staticGlobal: require('./lib/globals/static'),
   },
 };

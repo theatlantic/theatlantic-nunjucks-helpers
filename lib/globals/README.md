@@ -26,3 +26,7 @@ This is a function that returns an empty string (no-op). It will only be used on
 ### criticalCss
 
 This is a function that returns an empty string (no-op). It's currently a python function that takes a CSS path and inlines it's contents in the template. It fixes paths for background images and such as well.
+
+### static
+
+This is a function that returns the absolute static url of a passed relative url for django.

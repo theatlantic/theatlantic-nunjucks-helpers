@@ -37,3 +37,4 @@ Here are the current helpers included with this package:
 
 * `django_include`
 * `critical_css`
+* `static`
