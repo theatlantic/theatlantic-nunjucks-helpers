@@ -25,6 +25,12 @@ module.exports = {
      * @type {Function}
      */
     jsonify: require('./lib/filters/jsonify'),
+
+    /**
+     * The 'smart_strip_tags' filter
+     * @type {Function}
+     */
+    smartStripTags: require('./lib/filters/smart-strip-tags'),
   },
   globals: {},
 };
