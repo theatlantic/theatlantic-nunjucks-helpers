@@ -38,5 +38,11 @@ module.exports = {
      * @type {Function}
      */
     djangoInclude: require('./lib/globals/django-include'),
+
+    /**
+     * The 'critical_css' global - noop
+     * @type {Function}
+     */
+    criticalCss: require('./lib/globals/critical-css'),
   },
 };
