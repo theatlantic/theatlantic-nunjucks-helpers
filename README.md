@@ -20,5 +20,7 @@ env.addExtension('with', new extensions.With());
 
 Here are the current extensions included with this package:
 
+**CAVEAT:** These are all just no-op'ed right now to appease linters and compilers :cry:
+
 * **[With](https://github.com/theatlantic/nunjucks-extensions/tree/master/lib/with)** - Creates a scoped context block
 * **[Cache](https://github.com/theatlantic/nunjucks-extensions/tree/master/lib/cache)** - Cache contents at compile time
