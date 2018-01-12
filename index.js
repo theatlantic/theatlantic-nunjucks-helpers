@@ -50,5 +50,11 @@ module.exports = {
      * @type {Function}
      */
     staticGlobal: require('./lib/globals/static'),
+
+    /**
+     * The 'json_dump' global
+     * @type {Function}
+     */
+    jsonDump: require('./lib/globals/json-dump'),
   },
 };

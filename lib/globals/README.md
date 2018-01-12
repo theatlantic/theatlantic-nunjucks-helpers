@@ -30,3 +30,7 @@ This is a function that returns an empty string (no-op). It's currently a python
 ### static
 
 This is a function that returns the absolute static url of a passed relative url for django.
+
+### json_dump
+
+This is a function that outputs a JSON string
