@@ -8,7 +8,7 @@ describe('#jsonfiy filter', function() {
   let env;
 
   before(function() {
-    env = nunjucks.configure('test/filters');
+    env = nunjucks.configure('test/filters', { autoescape: false });
     env.addFilter('jsonify', helpers.filters.jsonify);
   });
 
@@ -23,7 +23,7 @@ describe('#jsonfiy filter', function() {
         authors: ['David Frum', 'Rob Meyer']
       }
     };
-    const tplString = '{{ article|jsonify|safe }}';
+    const tplString = '{{ article|jsonify }}';
     const rendered = nunjucks.renderString(tplString, props);
     const result = JSON.parse(rendered);
     expect(result).to.be.an('object');
