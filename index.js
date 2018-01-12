@@ -32,5 +32,11 @@ module.exports = {
      */
     smartStripTags: require('./lib/filters/smart-strip-tags'),
   },
-  globals: {},
+  globals: {
+    /**
+     * The 'django_include' global - noop
+     * @type {Function}
+     */
+    djangoInclude: require('./lib/globals/django-include'),
+  },
 };
