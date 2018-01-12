@@ -42,10 +42,6 @@ Use it like this in a template:
 
 This tag will (one day) create a scoped block with which to apply given variables
 
-## Usage
-
-Add the extension to your nunjucks environment:
-
 Use it like this in a template:
 
 ```nunjucks
