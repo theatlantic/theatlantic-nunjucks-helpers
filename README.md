@@ -1,26 +1,39 @@
-# Nunjucks Extensions for the Atlantic
+# Nunjucks Helpers for the Atlantic
 
-This is a collection of [Nunjucks](https://github.com/mozilla/nunjucks/) extensions for use in _the Atlantic's_ codebase.
+This is a collection of [Nunjucks](https://github.com/mozilla/nunjucks/) extensions, globals, and filters for use in _the Atlantic's_ codebase.
 
-## Example Usage
+## Usage
 
-The extensions are all attached to default export object. Use as many or as little as you need.
+The helpers are all attached to the default export object. Use as many or as little as you need.
 
 ```javascript
 const Nunjucks = require('nunjucks');
-const extensions = require('theatlantic-nunjucks-extensions');
+const helpers = require('theatlantic-nunjucks-helpers');
 
 const env = new Nunjucks.Environment();
 
-env.addExtension('cache', new extensions.Cache());
-env.addExtension('with', new extensions.With());
+env.addExtension('with', new helpers.extensions.With());
+env.addFilter('jsonify', helpers.filters.jsonify);
+env.addGlobal('critical_css', helpers.globals.critical_css);
 ```
 
-## Included Extensions
+## Includes
 
-Here are the current extensions included with this package:
+Here are the current helpers included with this package:
 
-**CAVEAT:** These are all just no-op'ed right now to appease linters and compilers :cry:
+### Extensions
 
-* **[With](https://github.com/theatlantic/nunjucks-extensions/tree/master/lib/with)** - Creates a scoped context block
-* **[Cache](https://github.com/theatlantic/nunjucks-extensions/tree/master/lib/cache)** - Cache contents at compile time
+**NOTE:** These are all just no-op'ed right now to appease linters and compilers :cry:
+
+* `with` - Creates a scoped context block
+* `cache` - Cache contents at compile time
+
+### Filters
+
+* `jsonify`
+* `smart_strip_tags`
+
+### Globals
+
+* `django_include`
+* `critical_css`
