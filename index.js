@@ -1,22 +1,24 @@
-const CacheExtension = require('./lib/cache/cache-extension');
-const WithExtension = require('./lib/with/with-extension');
-
+/* eslint-disable global-require */
 module.exports = {
-  /**
-   * The 'cache' extension
-   * @type {Object}
-   * @example
-   *  const extensions = require('theatlantic-nunjucks-extensions');
-   *  env.addExtension('cache', new extensions.Cache());
-   */
-  Cache: CacheExtension,
+  extensions: {
+    /**
+     * The 'cache' extension
+     * @type {Object}
+     * @example
+     *  const helpers = require('theatlantic-nunjucks-helpers');
+     *  env.addExtension('cache', new helpers.extensions.Cache());
+     */
+    Cache: require('./lib/extensions/cache'),
 
-  /**
-   * The 'with' extension
-   * @type {Object}
-   * @example
-   *  const extensions = require('theatlantic-nunjucks-extensions');
-   *  env.addExtension('with', new extensions.With());
-   */
-  With: WithExtension,
+    /**
+     * The 'with' extension
+     * @type {Object}
+     * @example
+     *  const helpers = require('theatlantic-nunjucks-helpers');
+     *  env.addExtension('with', new helpers.extensions.With());
+     */
+    With: require('./lib/extensions/with'),
+  },
+  filters: {},
+  globals: {},
 };

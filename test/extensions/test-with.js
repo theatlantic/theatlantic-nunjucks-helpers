@@ -1,25 +1,25 @@
 const nunjucks = require('nunjucks');
 const chai = require('chai');
-const extensions = require('../../index');
+const helpers = require('../../index');
 
-const CacheExtension = extensions.Cache;
+const WithExtension = helpers.extensions.With;
 const expect = chai.expect;
 
-describe('#cache block tag', function() {
+describe('#with block tag', function() {
   let env;
 
   before(function() {
     nunjucks.installJinjaCompat();
-    env = nunjucks.configure('test/cache');
-    env.addExtension('cache', new CacheExtension());
+    env = nunjucks.configure('test/extensions');
+    env.addExtension('with', new WithExtension());
   });
 
   it('should exist in the nunjucks environment', function() {
-    expect(env.hasExtension('cache')).to.be.true;
+    expect(env.hasExtension('with')).to.be.true;
   });
 
   it('should not error when compiling', function() {
-    const tplString = '{% cache %}I required heavy DB operations.{% endcache %}';
+    const tplString = '{% with author = article.author %}{{ author }}{% endwith %}';
     const result = nunjucks.compile(tplString);
     expect(result).to.be.an('object');
   });
@@ -29,8 +29,13 @@ describe('#cache block tag', function() {
   //       it will work
   //
   // it('should render correctly', function() {
-  //   const result = nunjucks.render('templates/cache_block.html');
-  //   const expected = 'I required heavy DB operations.';
+  //   const props = {
+  //     article: {
+  //       author: 'David Frum'
+  //     }
+  //   };
+  //   const result = nunjucks.render('templates/with_block.html', props);
+  //   const expected = 'David Frum';
   //   expect(result).to.equal(expected);
   // });
 });
