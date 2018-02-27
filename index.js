@@ -56,5 +56,11 @@ module.exports = {
      * @type {Function}
      */
     jsonDump: require('./lib/globals/json-dump'),
+
+    /**
+     * The 'json_dump' global
+     * @type {Function}
+     */
+    responsiveEmbeds: require('./lib/globals/responsive-embeds'),
   },
 };
