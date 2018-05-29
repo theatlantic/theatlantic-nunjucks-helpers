@@ -43,6 +43,12 @@ module.exports = {
      * The 'critical_css' global - noop
      * @type {Function}
      */
+    now: require('./lib/globals/now'),
+
+    /**
+     * The 'now' global
+     * @type {Function}
+     */
     criticalCss: require('./lib/globals/critical-css'),
 
     /**
