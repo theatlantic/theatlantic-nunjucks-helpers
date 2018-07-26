@@ -18,6 +18,15 @@ module.exports = {
      *  env.addExtension('with', new helpers.extensions.With());
      */
     With: require('./lib/extensions/with'),
+
+    /**
+     * The 'render' extension
+     * @type {Object}
+     * @example
+     *  const helpers = require('theatlantic-nunjucks-helpers');
+     *  env.addExtension('render', new helpers.extensions.Render());
+     */
+    Render: require('./lib/extensions/render'),
   },
   filters: {
     /**
