@@ -1,3 +1,5 @@
+const path = require('path');
+
 const nunjucks = require('nunjucks');
 
 const chai = require('chai');
@@ -6,14 +8,14 @@ const helpers = require('../../index');
 const RenderExtension = helpers.extensions.Render;
 const expect = chai.expect;
 
-const safe = nunjucks.runtime.markSafe;
-
 describe('#render tag', function() {
   let env;
 
   before(function() {
-    env = nunjucks.configure('test/extensions', { autoescape: false });
-    env.addExtension('render', new RenderExtension('./test/extensions', 'templates'));
+    env = new nunjucks.Environment(
+      new nunjucks.FileSystemLoader(path.resolve(__dirname, 'templates')),
+      { autoescape: false });
+    env.addExtension('render', new RenderExtension(env, 'components'));
   });
 
   it('should exist in the nunjucks environment', function() {
@@ -22,12 +24,12 @@ describe('#render tag', function() {
 
   it('should not error when compiling', function() {
     const tplString = '{% render "@component" %}';
-    const result = nunjucks.compile(tplString);
+    const result = nunjucks.compile(tplString, env);
     expect(result).to.be.an('object');
   });
 
   it('should render a template correctly', function() {
-    const result = nunjucks.render('templates/render_block.html');
+    const result = env.render('render_block.html');
     const expected = '<h1></h1>';
 
     expect(result.trim()).to.equal(expected);
@@ -35,7 +37,7 @@ describe('#render tag', function() {
 
   it('should render a template with a context correctly', function() {
     const context = { title: 'My Title' };
-    const result = nunjucks.render('templates/render_block.html', context);
+    const result = env.render('render_block.html', context);
     const expected = '<h1>My Title</h1>';
 
     expect(result.trim()).to.equal(expected);
@@ -43,7 +45,7 @@ describe('#render tag', function() {
 
   it('should render a root context correctly', function() {
     const rootContext = { title: 'My Title' };
-    const result = nunjucks.renderString('{% render "@component" %}', rootContext);
+    const result = env.renderString('{% render "@component" %}', rootContext);
     const expected = '<h1>My Title</h1>';
 
     expect(result.trim()).to.equal(expected);
@@ -51,7 +53,7 @@ describe('#render tag', function() {
 
   it('should render a local context correctly', function() {
     const localContext = JSON.stringify({ title: 'My Title' });
-    const result = nunjucks.renderString(`{% render "@component", ${localContext} %}`);
+    const result = env.renderString(`{% render "@component", ${localContext} %}`);
     const expected = '<h1>My Title</h1>';
 
     expect(result.trim()).to.equal(expected);
@@ -61,7 +63,7 @@ describe('#render tag', function() {
     const rootContext = { title: 'My Title' };
     const localContext = JSON.stringify({ title: 'My New Title' });
     const renderString = `{% render "@component", ${localContext} %}`
-    const result = nunjucks.renderString(renderString, rootContext);
+    const result = env.renderString(renderString, rootContext);
     const expected = '<h1>My New Title</h1>';
 
     expect(result.trim()).to.equal(expected);
@@ -71,7 +73,7 @@ describe('#render tag', function() {
     const rootContext = { title: 'My Title' };
     const localContext = JSON.stringify({ body: 'Hello World' });
     const renderString = `{% render "@compound-component", ${localContext} %}`;
-    const result = nunjucks.renderString(renderString, rootContext);
+    const result = env.renderString(renderString, rootContext);
     const expected = '<h1></h1>\n<p>Hello World</p>';
 
     expect(result.trim()).to.equal(expected);
@@ -81,7 +83,7 @@ describe('#render tag', function() {
     const rootContext = { title: 'My Title' };
     const localContext = JSON.stringify({ body: 'Hello World' });
     const renderString = `{% render "@compound-component", ${localContext}, true %}`;
-    const result = nunjucks.renderString(renderString, rootContext);
+    const result = env.renderString(renderString, rootContext);
     const expected = '<h1>My Title</h1>\n<p>Hello World</p>';
 
     expect(result.trim()).to.equal(expected);
@@ -91,7 +93,7 @@ describe('#render tag', function() {
     const rootContext = { title: 'My Title' };
     const localContext = JSON.stringify({ title: 'My New Title', body: 'Hello World' });
     const renderString = `{% render "@compound-component", ${localContext}, true %}`;
-    const result = nunjucks.renderString(renderString, rootContext);
+    const result = env.renderString(renderString, rootContext);
     const expected = '<h1>My New Title</h1>\n<p>Hello World</p>';
 
     expect(result.trim()).to.equal(expected);
